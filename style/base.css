@@ -1,0 +1,28 @@
+:root {
+  --primary: rgb(8, 81, 109);
+  --secondary: rgb(253, 169, 46);
+  --tertiary: #a60000;
+  --quarternary: rgb(29, 156, 91);
+
+  --light: #f8f8f8;
+  --dark: #202223;
+
+  --silver: #bebebe;
+}
+
+html {
+  /* font-size: 68.75% */
+}
+
+body {
+  background-color: var(--light);
+  color: var(--dark);
+}
+
+body * {
+  box-sizing: border-box;
+}
+
+grid {
+  display: block;
+}

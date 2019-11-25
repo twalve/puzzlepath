@@ -1,0 +1,58 @@
+grid {
+  border: 0.125rem solid var(--dark);
+  width: 21.25rem;
+}
+
+grid button {
+  background-color: var(--silver);
+  border: 0.125rem solid var(--light);
+  font-size: 2rem;
+  height: 3.5rem;
+  position: relative;
+  width: 3.5rem;
+}
+
+/* grid button:nth-child(n+1):nth-child(-n+6)::before {
+  content: "";
+  border-top: 0.125rem solid var(--dark);
+  display: block;
+  left: -0.25rem;
+  position: absolute;
+  bottom: -0.175rem;
+  width: 3.75rem;
+  z-index: 10;
+} */
+
+grid button.bottom::before {
+  content: "";
+  border-top: 0.125rem solid var(--dark);
+  bottom: -0.175rem;
+  display: block;
+  left: -0.125rem;
+  position: absolute;
+  width: 3.5rem;
+  z-index: 10;
+}
+
+grid button.clicked {
+  background-color: var(--primary);
+}
+
+grid button.right::before {
+  content: "";
+  border-right: 0.125rem solid var(--dark);
+  display: block;
+  height: 3.5rem;
+  position: absolute;
+  right: -0.175rem;
+  top: -0.125rem;
+  width: 3.5rem;
+  z-index: 10;
+}
+
+grid button.bottom.right::before {
+  border-bottom: 0.125rem solid var(--dark);
+  border-top: none;
+  height: 3.45rem;
+  width: 3.45rem;
+}
