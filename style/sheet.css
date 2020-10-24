@@ -1,58 +1,137 @@
-grid {
-  border: 0.125rem solid var(--dark);
-  width: 21.25rem;
+menu {
+  margin: 0 auto;
+  width: 15rem;
 }
 
-grid button {
+ul {
+  margin-left: .25rem; 
+ }
+
+li {
+  display: inline-block;
+  margin-bottom: .25rem;
+}
+
+button {
+  border-radius: .25rem;
+  border-style: none;
+  font-size: 1.5rem;
+  height: 3.5rem;
+  line-height: 3.5rem;
+  width: 3.5rem;
+}
+
+input {
+  font-size: 1.5rem;
+  height: 3.5rem;
+  line-height: 3.5rem;
+  width: 7rem;
+}
+
+grid {
   background-color: var(--silver);
-  border: 0.125rem solid var(--light);
+  display: block;
+  height: 14rem;
+  margin: 3.5rem auto;
+  position: relative;
+  width: 10.5rem;
+}
+
+rect {
+  display: block;
   font-size: 2rem;
   height: 3.5rem;
-  position: relative;
+  line-height: 3.5rem;
+  position: absolute;
+  width: 3.5rem;
+}
+
+rect[hidden] {
+  display: none;
+}
+
+rect.w3 {
+  width: 10.5rem;
+}
+
+rect.w2 {
+  width: 7rem;
+}
+
+rect.w1 {
   width: 3.5rem;
 }
 
-/* grid button:nth-child(n+1):nth-child(-n+6)::before {
-  content: "";
-  border-top: 0.125rem solid var(--dark);
-  display: block;
-  left: -0.25rem;
-  position: absolute;
-  bottom: -0.175rem;
-  width: 3.75rem;
-  z-index: 10;
-} */
-
-grid button.bottom::before {
-  content: "";
-  border-top: 0.125rem solid var(--dark);
-  bottom: -0.175rem;
-  display: block;
-  left: -0.125rem;
-  position: absolute;
-  width: 3.5rem;
-  z-index: 10;
+rect.h4 {
+  height: 14rem;
 }
 
-grid button.clicked {
-  background-color: var(--primary);
+rect.h3 {
+  height: 10.5rem;
 }
 
-grid button.right::before {
-  content: "";
-  border-right: 0.125rem solid var(--dark);
-  display: block;
+rect.h2 {
+  height: 7rem;
+}
+
+rect.h1 {
   height: 3.5rem;
-  position: absolute;
-  right: -0.175rem;
-  top: -0.125rem;
-  width: 3.5rem;
-  z-index: 10;
 }
 
-grid button.bottom.right::before {
-  border-bottom: 0.125rem solid var(--dark);
-  border-top: none;
-  height: 3.45rem;
-  width: 3.45rem;
+rect.r1 {
+  top: 0;
+}
+
+rect.r2 {
+  top: 3.5rem;
+}
+
+rect.r3 {
+  top: 7rem;
+}
+
+rect.r4 {
+  top: 10.5rem;
+}
+
+rect.c1 {
+  left: 0;
+}
+
+rect.c2 {
+  left: 3.5rem;
+}
+
+rect.c3 {
+  left: 7rem;
+}
+
+rect.active {
+  background-color: var(--tertiary);
+  border: 0.125rem solid var(--light);
+}
+
+button.active {
+  background-color: var(--tertiary);
+}
+
+h2 {
+  margin: 0 auto;
+  width: 25%;
+}
+
+span {
+  color: var(--light);
+  display: inline-block;
+  font-weight: 200;
+  width: calc(50% - .25rem);
+}
+
+span:first-of-type {
+  color: var(--greyish);
+  text-align: right;
+}
+
+span.switch {
+  color: var(--greyish);
 }

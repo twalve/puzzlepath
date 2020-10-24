@@ -1,61 +1,84 @@
-(function() {
+(function () {
   const PZZL = {
-    GRID: null,
-    TOTAL: 0,
-    add: function(button) {
-      PZZL.TOTAL += parseInt(button.value, 10);
-      button.classList.add("clicked")
+    clear: function (selector) {
+      selector = typeof selector === "string" ? selector : ".active";
 
-      console.log(PZZL.TOTAL);
+      document.querySelectorAll(selector).forEach((element) => {
+        element.classList.remove("active");
+      });
+
+      PZZL.count();
     },
-    build: function() {
-      const shadow = document.createElement("div");
+    click: function (event) {
+      const source = event.target;
+      const w = source.id.substr(1,1);
+      const h = source.id.substr(3);
+      const selector = ".w" + w + ".h" + h;
 
-      for (const tile in TILES) {
-        const button = document.createElement("button");
-        button.innerHTML = TILES[tile].value;
-        button.value = TILES[tile].value;
+      PZZL.toggle(source);
 
-        if (TILES[tile]["⅃"] === "_") {
-          button.classList.add("bottom");
-        } else if (TILES[tile]["⅃"] === "|") {
-          button.classList.add("right");
-        } else if (TILES[tile]["⅃"] === "_|") {
-          button.classList.add("bottom");
-          button.classList.add("right");
-        }
-
-        shadow.appendChild(button);
-      }
-
-      PZZL.GRID.innerHTML = shadow.innerHTML;
-    },
-    click: function(element) {
-      clicked = element.target;
-
-      if (clicked.classList.contains("clicked")) {
-        PZZL.remove(clicked);
+      if (document.querySelector(selector).classList.contains("active")) {
+        PZZL.clear(selector);
       } else {
-        PZZL.add(clicked);
+        document.querySelectorAll(selector).forEach((element) => {
+          element.classList.add("active");
+        });
+      }
+
+      PZZL.count();
+    },
+    coat: function () {
+      document.querySelectorAll("rect").forEach((element) => {
+        element.classList.add("active");
+      });
+
+      document.querySelectorAll("button").forEach((element) => {
+        element.classList.add("active");
+      });
+
+      PZZL.count();
+    },
+    count: function () {
+      const active = document.querySelectorAll("rect.active");
+      const hidden = document.querySelectorAll("rect[hidden].active");
+
+      let count = active.length ? active.length - hidden.length : 0;
+
+      document.querySelector("#count").innerHTML = count;
+    },
+    switch: function (event) {
+      const selector = event.target;
+
+      if (selector.classList.contains("switch")) {
+        selector.classList.remove("switch");
+      } else {
+        selector.classList.add("switch");
       }
     },
-    find: function() {
-      PZZL.GRID = document.querySelector("#grid");
+    toggle: function (selector) {
+      if (selector.classList.contains("active")) {
+        selector.classList.remove("active");
+      } else {
+        selector.classList.add("active");
+      }
     },
-    remove: function(button) {
-      PZZL.TOTAL -= parseInt(button.value, 10);
-      button.classList.remove("clicked");
+    listen: function () {
+      document.querySelectorAll("button").forEach((button) => {
+        button.addEventListener("click", PZZL.click);
+      });
 
-      console.log(PZZL.TOTAL);
+      document.querySelector("#clear").addEventListener("click", PZZL.clear);
+
+      document.querySelector("#all").addEventListener("click", PZZL.coat);
+
+      document.querySelector("#count").addEventListener("click", PZZL.switch);
     },
-    listen: function() {
-      const grid = document.querySelector("grid");
-      grid.addEventListener("click", PZZL.click);
+    start: function () {
+      this.coat();
     },
-    init: function() {
-      this.find();
+    init: function () {
       this.listen();
-      this.build();
+      this.start();
     }
   }
 
